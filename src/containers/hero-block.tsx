@@ -1,11 +1,11 @@
-import React, { useContext, useCallback, useRef, useEffect } from 'react';
-import { Waypoint } from 'react-waypoint';
-import Search from 'components/search';
-import HeroBannerImg from 'assets/image/hero-banner-img.jpg';
-import { StickyContext } from 'contexts/sticky/sticky.provider';
-import { useMedia } from 'helpers/use-media';
+import React, { useContext, useCallback, useRef, useEffect } from "react";
+import { Waypoint } from "react-waypoint";
+import Search from "components/search";
+import HeroBannerImg from "assets/image/hero-banner-img.jpg";
+import { StickyContext } from "contexts/sticky/sticky.provider";
+import { useMedia } from "helpers/use-media";
 export default function HeroBlock() {
-  const isLargeScreen = useMedia('(min-width: 1024px)');
+  const isLargeScreen = useMedia("(min-width: 1024px)");
 
   const {
     state: { isSticky },
@@ -18,17 +18,17 @@ export default function HeroBlock() {
     }
   }, [isSticky, isLargeScreen]);
   const setSticky = useCallback(
-    () => dispatch({ type: 'SET_STICKY' }),
+    () => dispatch({ type: "SET_STICKY" }),
     [dispatch]
   );
 
   const removeSticky = useCallback(
-    () => dispatch({ type: 'REMOVE_STICKY' }),
+    () => dispatch({ type: "REMOVE_STICKY" }),
     [dispatch]
   );
 
   const onWaypointPositionChange = ({ currentPosition }) => {
-    if (!currentPosition || currentPosition === 'above') {
+    if (!currentPosition || currentPosition === "above") {
       setSticky();
     }
   };
@@ -49,7 +49,7 @@ export default function HeroBlock() {
 
         <p className="font-17px text-gray-700 lg:mb-60px text-center leading-loose">
           Dedicated to providing the widest selection of health and selfcare
-          product.
+          products.
         </p>
         {!isSticky && <Search ref={searchRef} className="hidden lg:flex" />}
         <Waypoint
